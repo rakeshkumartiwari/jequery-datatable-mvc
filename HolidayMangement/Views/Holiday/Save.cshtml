@@ -1,0 +1,50 @@
+﻿@model HolidayMangement.Holiday
+
+<h2>Save</h2>
+
+@using (Html.BeginForm("Save", "Holiday", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.Id > 0)
+    {
+        @Html.HiddenFor(h => h.Id)
+    }
+
+    <div class="form-group">
+        <label>Holiday Type</label>
+        @Html.DropDownListFor(h => h.HolidayType, new List<SelectListItem>
+   {
+       new SelectListItem
+       {
+           Text="National Holiday",
+           Value="1"
+       },
+        new SelectListItem
+       {
+           Text="Company Holiday",
+           Value="2"
+       },
+         new SelectListItem
+       {
+           Text="Others Holiday",
+           Value="3"
+       },
+   }, "Select Holiday", new { @class = "form-control" })
+        @Html.ValidationMessageFor(h => h.HolidayType)
+    </div>
+
+    <div class="form-group">
+        <label>Holiday Name</label>
+        @Html.TextBoxFor(h => h.HolidayName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(h => h.HolidayName)
+    </div>
+
+    <div class="form-group">
+        <label>Holiday Date</label>
+        @Html.TextBoxFor(h => h.HolidayDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(h => h.HolidayDate)
+    </div>
+
+    <div>
+        <input type="submit" value="Save" class="btn btn-primary"/>
+    </div>
+}

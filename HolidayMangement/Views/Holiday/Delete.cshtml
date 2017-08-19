@@ -1,0 +1,24 @@
+﻿@model HolidayMangement.Holiday
+
+<h2>Delete Holiday</h2>
+@using (Html.BeginForm("Delete", "Holiday", FormMethod.Post, new { id = "popupForm" }))
+{
+    @Html.HiddenFor(h => h.Id)
+    <div class="form-group">
+        <label>Holiday Type</label>
+        <p>@Model.HolidayType</p>
+    </div>
+    <div class="form-group">
+        <label>Holiday Name</label>
+        <p>@Model.HolidayName</p>
+    </div>
+    <div class="form-group">
+        <label>Holiday Date</label>
+        <p>@Model.HolidayDate</p>
+    </div>
+
+    <div>
+        <input type="submit" value="Delete" class="btn btn-primary" />
+    </div>
+}
+
